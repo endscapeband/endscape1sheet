@@ -36,6 +36,12 @@
       .pill {
         border-radius: 999px;
       }
+      .photo-trigger {
+        cursor: pointer;
+      }
+      .photo-lightbox::backdrop {
+        background: rgba(0, 0, 0, 0.82);
+      }
     </style>
   </head>
   <body class="text-zinc-100">
@@ -190,10 +196,18 @@
           >Download Hero Image</a
         >
         <div class="mt-5 grid grid-cols-2 gap-4 md:grid-cols-4">
-          <a href="../assets/live/live_01.jpg" target="_blank" rel="noopener noreferrer"><img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_01.webp" alt="ENDSCAPE live photo 1" /></a>
-          <a href="../assets/live/live_02.jpg" target="_blank" rel="noopener noreferrer"><img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_02.webp" alt="ENDSCAPE live photo 2" /></a>
-          <a href="../assets/live/live_03.jpg" target="_blank" rel="noopener noreferrer"><img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_03.webp" alt="ENDSCAPE live photo 3" /></a>
-          <a href="../assets/live/live_04.jpg" target="_blank" rel="noopener noreferrer"><img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_04.webp" alt="ENDSCAPE live photo 4" /></a>
+          <button type="button" class="photo-trigger" data-full="../assets/live/live_01.jpg" data-alt="ENDSCAPE live photo 1">
+            <img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_01.webp" alt="ENDSCAPE live photo 1" />
+          </button>
+          <button type="button" class="photo-trigger" data-full="../assets/live/live_02.jpg" data-alt="ENDSCAPE live photo 2">
+            <img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_02.webp" alt="ENDSCAPE live photo 2" />
+          </button>
+          <button type="button" class="photo-trigger" data-full="../assets/live/live_03.jpg" data-alt="ENDSCAPE live photo 3">
+            <img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_03.webp" alt="ENDSCAPE live photo 3" />
+          </button>
+          <button type="button" class="photo-trigger" data-full="../assets/live/live_04.jpg" data-alt="ENDSCAPE live photo 4">
+            <img class="h-40 w-full rounded-xl border border-white/10 object-cover" src="../assets/live/live_04.webp" alt="ENDSCAPE live photo 4" />
+          </button>
         </div>
       </section>
 
@@ -212,5 +226,42 @@
         </article>
       </section>
     </main>
+    <dialog id="photoLightbox" class="photo-lightbox w-[min(92vw,1040px)] rounded-3xl border border-white/15 bg-zinc-950 p-3 text-zinc-100">
+      <div class="mb-3 flex items-center justify-between gap-3">
+        <p id="photoLightboxTitle" class="text-sm text-zinc-300">Press photo</p>
+        <div class="flex items-center gap-2">
+          <a id="photoLightboxDownload" class="pill inline-flex border border-rose-400/60 px-4 py-2 text-sm font-medium text-rose-300 hover:bg-rose-500/10" href="#" download>Download</a>
+          <button id="photoLightboxClose" type="button" class="pill border border-white/20 px-4 py-2 text-sm hover:border-rose-500/60 hover:text-rose-300">Close</button>
+        </div>
+      </div>
+      <img id="photoLightboxImage" src="" alt="" class="max-h-[80vh] w-full rounded-2xl object-contain" />
+    </dialog>
+    <script>
+      const photoLightbox = document.getElementById('photoLightbox');
+      const photoLightboxImage = document.getElementById('photoLightboxImage');
+      const photoLightboxTitle = document.getElementById('photoLightboxTitle');
+      const photoLightboxDownload = document.getElementById('photoLightboxDownload');
+      const photoLightboxClose = document.getElementById('photoLightboxClose');
+
+      document.querySelectorAll('.photo-trigger').forEach((button) => {
+        button.addEventListener('click', () => {
+          const full = button.dataset.full;
+          const alt = button.dataset.alt || 'Press photo';
+          photoLightboxImage.src = full;
+          photoLightboxImage.alt = alt;
+          photoLightboxTitle.textContent = alt;
+          photoLightboxDownload.href = full;
+          photoLightboxDownload.setAttribute('download', full.split('/').pop());
+          photoLightbox.showModal();
+        });
+      });
+
+      photoLightboxClose?.addEventListener('click', () => photoLightbox.close());
+      photoLightbox?.addEventListener('click', (event) => {
+        if (event.target === photoLightbox) {
+          photoLightbox.close();
+        }
+      });
+    </script>
   </body>
 </html>
