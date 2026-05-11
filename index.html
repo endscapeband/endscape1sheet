@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ENDSCAPE - Official Site</title>
+    <meta
+      name="description"
+      content="ENDSCAPE - modern rock/metal with electronic textures. Music, videos, tour dates, merch, and news."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+
+    <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="./assets/icons/site.webmanifest" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              accent: '#e11d48',
+              base: {
+                900: '#0f0f10',
+                950: '#09090b'
+              }
+            },
+            boxShadow: {
+              glow: '0 0 40px rgba(225, 29, 72, 0.35)'
+            },
+            borderRadius: {
+              soft: '1.25rem'
+            },
+            fontFamily: {
+              display: ['Rajdhani', 'system-ui', 'sans-serif'],
+              body: ['Barlow', 'system-ui', 'sans-serif']
+            }
+          }
+        }
+      };
+    </script>
+
+    <link rel="stylesheet" href="./assets/vendor/fontawesome/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Rajdhani:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      body {
+        background:
+          radial-gradient(circle at 20% -10%, rgba(225, 29, 72, 0.2), transparent 40%),
+          radial-gradient(circle at 80% 20%, rgba(225, 29, 72, 0.12), transparent 30%),
+          #09090b;
+      }
+
+      .card {
+        background: rgba(24, 24, 27, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .pill-btn {
+        border-radius: 999px;
+      }
+
+      .hero-overlay {
+        background: linear-gradient(180deg, rgba(9, 9, 11, 0.72) 0%, rgba(9, 9, 11, 0.48) 28%, rgba(9, 9, 11, 0.22) 62%, rgba(9, 9, 11, 0.08) 100%);
+      }
+
+      .tour-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .tour-table tr + tr td {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .tour-table td {
+        padding: 1rem 0.75rem;
+        vertical-align: middle;
+      }
+
+      .tour-table .tour-city a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .tour-table .tour-date {
+        display: inline-flex;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 999px;
+        padding: 0.35rem 0.65rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgb(212 212 216);
+      }
+
+      .tour-table .tour-city {
+        display: block;
+        margin-top: 0.6rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: rgb(250 250 250);
+      }
+
+      .tour-table .tour-cta {
+        width: 1%;
+        white-space: nowrap;
+        text-align: right;
+      }
+
+      .tour-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 7.5rem;
+        padding: 0.75rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-size: 0.82rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+      }
+
+      .tour-pill-secondary {
+        color: rgb(244 244 245);
+        background: transparent;
+      }
+
+      .tour-pill-primary {
+        color: white;
+        background: #e11d48;
+        border-color: rgba(225, 29, 72, 0.7);
+        box-shadow: 0 0 26px rgba(0, 0, 0, 0.85);
+      }
+
+      @media (max-width: 767px) {
+        .tour-table,
+        .tour-table tbody,
+        .tour-table tr,
+        .tour-table td {
+          display: block;
+          width: 100%;
+        }
+
+        .tour-table td {
+          padding: 0.5rem 0;
+          border-top: 0 !important;
+        }
+
+        .tour-table tr {
+          padding: 1rem 0;
+        }
+
+        .tour-table tr + tr {
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .tour-table .tour-cta {
+          text-align: left;
+        }
+
+        .tour-pill {
+          min-width: 0;
+          width: 100%;
+        }
+      }
+
+      .mailing-embed {
+        max-width: 720px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 1.25rem;
+        background:
+          linear-gradient(180deg, rgba(24, 24, 27, 0.9), rgba(9, 9, 11, 0.92)),
+          rgba(9, 9, 11, 0.7);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        padding: 1.25rem;
+      }
+
+      .mailing-embed iframe {
+        width: 100%;
+        min-height: 180px;
+        background: transparent;
+      }
+
+      .platform-icon {
+        width: 1rem;
+        height: 1rem;
+        flex: 0 0 1rem;
+      }
+
+      .stream-btn {
+        min-height: 2.75rem;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition: none !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="font-body text-zinc-100">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-zinc-950/70 backdrop-blur-xl">
+      <div class="relative mx-auto flex max-w-6xl items-center justify-end px-4 py-3 sm:justify-between sm:px-6">
+        <a href="#top" class="absolute left-1/2 inline-flex -translate-x-1/2 items-center gap-3 sm:static sm:translate-x-0">
+          <img src="./assets/logos/endscape-logo-white.svg" alt="ENDSCAPE logo" class="h-8 w-auto" />
+        </a>
+
+        <button
+          id="menuToggle"
+          class="inline-flex items-center rounded-full border border-white/20 px-3 py-2 text-sm md:hidden"
+          aria-controls="mobileMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <nav class="hidden items-center gap-5 text-sm md:flex">
+          <a class="hover:text-accent" href="#about">About</a>
+          <a class="hover:text-accent" href="#music">Music</a>
+          <a class="hover:text-accent" href="#videos">Videos</a>
+          <a class="hover:text-accent" href="#tour">Tour</a>
+          <a class="hover:text-accent" href="#merch">Merch</a>
+          <a class="hover:text-accent" href="#gallery">Gallery</a>
+          <a class="hover:text-accent" href="#join">Join</a>
+          <a class="rounded-full border border-accent/70 px-4 py-2 text-accent hover:bg-accent/10" href="./epk/index.html">EPK</a>
+        </nav>
+      </div>
+
+      <nav id="mobileMenu" class="hidden border-t border-white/10 bg-zinc-950/95 px-4 py-3 md:hidden">
+        <div class="grid gap-2 text-sm">
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#about">About</a>
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#music">Music</a>
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#videos">Videos</a>
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#tour">Tour</a>
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#merch">Merch</a>
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#gallery">Gallery</a>
+          <a class="rounded-lg px-2 py-2 hover:bg-white/5" href="#join">Join</a>
+          <a class="rounded-lg px-2 py-2 text-accent hover:bg-accent/10" href="./epk/index.html">EPK</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="top" class="pt-16">
+      <section class="relative isolate overflow-hidden">
+        <picture>
+          <source
+            media="(min-width: 1536px)"
+            srcset="./assets/hero/hero-2560.webp 2560w, ./assets/hero/hero-1920.webp 1920w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <source
+            media="(min-width: 1024px)"
+            srcset="./assets/hero/hero-1920.webp 1920w, ./assets/hero/hero-1600.webp 1600w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <source
+            media="(min-width: 640px)"
+            srcset="./assets/hero/hero-1600.webp 1600w, ./assets/hero/hero-1200.webp 1200w"
+            sizes="100vw"
+            type="image/webp"
+          />
+          <img
+            src="./assets/hero/hero-800.webp"
+            alt="ENDSCAPE hero visual"
+            class="block w-full h-auto max-h-[70vh] object-cover object-[center_68%] lg:max-h-[820px]"
+            loading="eager"
+          />
+        </picture>
+        <div class="hero-overlay absolute inset-0"></div>
+
+        <div class="absolute inset-x-0 top-0 bottom-0">
+          <div class="relative mx-auto flex h-full max-w-6xl flex-col items-center justify-start px-4 pb-6 pt-4 text-center sm:px-6 sm:pt-16">
+            <img
+              src="./assets/logos/endscape-logo-white.svg"
+              alt="ENDSCAPE"
+              class="mb-5 hidden w-full max-w-[440px] drop-shadow-[0_12px_28px_rgba(0,0,0,0.95)] sm:block lg:max-w-[480px]"
+            />
+            <div class="mt-0 px-4 py-2 sm:mt-auto sm:w-full sm:max-w-3xl sm:px-8 sm:py-8">
+              <p class="max-w-2xl text-base text-zinc-100 drop-shadow-[0_0_24px_rgba(0,0,0,1)] sm:mx-auto sm:text-lg">
+                Modern rock/metal with electronic textures. High energy, cinematic, and digitally charged.
+              </p>
+              <div class="mt-6 flex flex-wrap justify-center gap-3">
+                <a class="pill-btn bg-accent px-5 py-2.5 font-medium text-white shadow-[0_0_26px_rgba(0,0,0,1)] hover:bg-rose-500" href="#music">Listen</a>
+                <a class="pill-btn bg-accent px-5 py-2.5 font-medium text-white shadow-[0_0_26px_rgba(0,0,0,1)] hover:bg-rose-500" href="#tour">Tickets</a>
+                <a class="pill-btn bg-accent px-5 py-2.5 font-medium text-white shadow-[0_0_26px_rgba(0,0,0,1)] hover:bg-rose-500" href="#join">Join the list</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="mx-auto max-w-6xl px-4 py-16 sm:px-6">
+        <div class="card rounded-soft p-6 sm:p-8">
+          <h2 class="font-display text-3xl font-semibold tracking-wide">About ENDSCAPE</h2>
+          <p class="mt-3 max-w-4xl text-zinc-300">
+            ENDSCAPE blends modern rock and metal with electronic textures, cinematic songwriting, and a digital edge.
+            Built for loud rooms and dark stages, the project pushes high-energy hooks, heavy rhythm, and atmosphere that
+            feels both futuristic and human.
+          </p>
+          <p class="mt-3 max-w-4xl text-zinc-300">
+            From aggressive drops to melodic refrains, ENDSCAPE sits at the intersection of heavy music and electronic
+            production. New releases, videos, and live dates are announced first through the mailing list.
+          </p>
+        </div>
+      </section>
+
+      <section id="music" class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <div class="card rounded-soft p-6 sm:p-8">
+          <h2 class="font-display text-3xl font-semibold tracking-wide">Music</h2>
+          <p class="mt-2 text-zinc-300">Stream ENDSCAPE on your platform of choice.</p>
+          <div class="mt-6 grid gap-5 rounded-2xl border border-white/10 bg-zinc-900/40 p-4 sm:grid-cols-[1.2fr_1fr] sm:p-5">
+            <div class="flex min-h-full flex-col">
+              <p class="text-xs uppercase tracking-[0.2em] text-zinc-400">Latest single</p>
+              <div class="flex flex-1 flex-col justify-center">
+                <h3 id="latestSingleTitle" class="mt-2 text-2xl font-semibold text-white">Alive</h3>
+                <p id="latestSingleMeta" class="mt-2 text-sm text-zinc-400">Single · Out now across all platforms</p>
+                <div class="mt-4 flex flex-wrap gap-2">
+                  <a
+                    id="latestSingleLink"
+                    class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-accent/60 px-4 py-2 text-sm font-medium text-accent hover:bg-accent/10"
+                    href="https://open.spotify.com/album/7L18H8rjuf0KZ67Bmjo8T6?si=eJjkhmJ0St2tsdp-SnXVCw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-spotify"></i>
+                    Spotify
+                  </a>
+                  <a
+                    class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/20 px-4 py-2 text-sm font-medium text-zinc-200 hover:border-accent/60 hover:text-accent"
+                    href="https://music.youtube.com/search?q=ENDSCAPE%20Alive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-youtube"></i>
+                    YouTube Music
+                  </a>
+                  <a
+                    class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/20 px-4 py-2 text-sm font-medium text-zinc-200 hover:border-accent/60 hover:text-accent"
+                    href="https://music.apple.com/gb/search?term=ENDSCAPE%20Alive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-apple"></i>
+                    Apple Music
+                  </a>
+                  <a
+                    class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/20 px-4 py-2 text-sm font-medium text-zinc-200 hover:border-accent/60 hover:text-accent"
+                    href="https://www.amazon.co.uk/music/player/search/ENDSCAPE%20Alive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-amazon"></i>
+                    Amazon Music
+                  </a>
+                  <a
+                    class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/20 px-4 py-2 text-sm font-medium text-zinc-200 hover:border-accent/60 hover:text-accent"
+                    href="https://www.deezer.com/search/ENDSCAPE%20Alive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-deezer"></i>
+                    Deezer
+                  </a>
+                  <a
+                    class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/20 px-4 py-2 text-sm font-medium text-zinc-200 hover:border-accent/60 hover:text-accent"
+                    href="https://listen.tidal.com/search?q=ENDSCAPE%20Alive"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <i class="fa-brands fa-tidal"></i>
+                    Tidal
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="overflow-hidden rounded-xl border border-white/10">
+              <iframe
+                id="latestSingleEmbed"
+                class="block h-[352px] w-full"
+                src="https://open.spotify.com/embed/playlist/0qxDWbhEDyROAjUY7o8kDy?utm_source=generator"
+                title="ENDSCAPE Spotify playlist"
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 gap-3 text-sm sm:grid-cols-2 lg:grid-cols-4">
+            <a class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 text-center hover:border-accent/60 hover:text-accent" href="https://www.youtube.com/@endscapeband" target="_blank" rel="noopener noreferrer" aria-label="YouTube Channel"><i class="fa-brands fa-youtube"></i>YouTube</a>
+            <a class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 text-center hover:border-accent/60 hover:text-accent" href="https://www.instagram.com/endscapeband/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i>Instagram</a>
+            <a class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 text-center hover:border-accent/60 hover:text-accent" href="https://www.tiktok.com/@endscapeband" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i>TikTok</a>
+            <a class="pill-btn stream-btn inline-flex items-center justify-center gap-2 border border-white/15 px-4 py-3 text-center hover:border-accent/60 hover:text-accent" href="https://www.facebook.com/endscapeband" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="videos" class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <h2 class="mb-6 font-display text-3xl font-semibold tracking-wide">Videos</h2>
+        <div class="grid gap-6 md:grid-cols-2 md:auto-rows-fr">
+          <article class="card rounded-soft flex h-full flex-col overflow-hidden">
+            <iframe
+              class="aspect-video w-full"
+              src="https://www.youtube-nocookie.com/embed/C77CHJcwDxc"
+              title="My Paradise video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <div class="p-4 font-medium">My Paradise</div>
+          </article>
+
+          <article class="card rounded-soft flex h-full flex-col overflow-hidden">
+            <iframe
+              class="aspect-video w-full"
+              src="https://www.youtube-nocookie.com/embed/EuEtW2vbdY8"
+              title="FOMO video"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+            <div class="p-4 font-medium">FOMO</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="tour" class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <div class="card rounded-soft p-6 sm:p-8">
+          <h2 class="font-display text-3xl font-semibold tracking-wide">Tour</h2>
+          <p class="mt-3 text-zinc-300">Upcoming ENDSCAPE shows.</p>
+          <div class="mt-4 rounded-xl border border-white/10 bg-zinc-900/40 px-5 py-3">
+            <table class="tour-table">
+              <tbody>
+                <tr>
+                  <td>
+                    <span class="tour-date">Wed, Apr 15</span>
+                    <span class="tour-city">
+                      <a href="https://www.bandsintown.com/e/108080617?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Bristol, United Kingdom</a>
+                    </span>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-secondary" href="https://www.bandsintown.com/e/108080617?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&trigger=rsvp_going" target="_blank" rel="noopener noreferrer">RSVP</a>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-primary" href="https://www.bandsintown.com/t/108080617?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=ticket&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Tickets</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="tour-date">Thu, Apr 23</span>
+                    <span class="tour-city">
+                      <a href="https://www.bandsintown.com/e/107881999?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Birmingham, United Kingdom</a>
+                    </span>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-secondary" href="https://www.bandsintown.com/e/107881999?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&trigger=rsvp_going" target="_blank" rel="noopener noreferrer">RSVP</a>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-primary" href="https://www.bandsintown.com/e/107881999?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=notify_me&utm_medium=email&utm_source=artist_email&trigger=notify_me" target="_blank" rel="noopener noreferrer">Notify Me</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="tour-date">Fri, Apr 24</span>
+                    <span class="tour-city">
+                      <a href="https://www.bandsintown.com/e/107882041?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Oldham, United Kingdom</a>
+                    </span>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-secondary" href="https://www.bandsintown.com/e/107882041?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&trigger=rsvp_going" target="_blank" rel="noopener noreferrer">RSVP</a>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-primary" href="https://www.bandsintown.com/e/107882041?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=notify_me&utm_medium=email&utm_source=artist_email&trigger=notify_me" target="_blank" rel="noopener noreferrer">Notify Me</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="tour-date">Sat, Apr 25</span>
+                    <span class="tour-city">
+                      <a href="https://www.bandsintown.com/e/107882088?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Leicester, United Kingdom</a>
+                    </span>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-secondary" href="https://www.bandsintown.com/e/107882088?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&trigger=rsvp_going" target="_blank" rel="noopener noreferrer">RSVP</a>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-primary" href="https://www.bandsintown.com/t/107882088?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=ticket&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Tickets</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="tour-date">Sun, Apr 26</span>
+                    <span class="tour-city">
+                      <a href="https://www.bandsintown.com/e/107882103?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&" target="_blank" rel="noopener noreferrer">Cambridge, United Kingdom</a>
+                    </span>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-secondary" href="https://www.bandsintown.com/e/107882103?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=rsvp&utm_medium=email&utm_source=artist_email&trigger=rsvp_going" target="_blank" rel="noopener noreferrer">RSVP</a>
+                  </td>
+                  <td class="tour-cta">
+                    <a class="tour-pill tour-pill-primary" href="https://www.bandsintown.com/e/107882103?affil_code=js_emailwidget_0015497599&app_id=js_emailwidget_0015497599&came_from=248&utm_campaign=notify_me&utm_medium=email&utm_source=artist_email&trigger=notify_me" target="_blank" rel="noopener noreferrer">Notify Me</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="merch" class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <div class="mb-6 flex flex-col items-center gap-3 text-center">
+          <div>
+            <h2 class="font-display text-3xl font-semibold tracking-wide">Merch</h2>
+            <p class="mt-2 text-zinc-300">Shop official ENDSCAPE gear in the full store.</p>
+          </div>
+          <a
+            class="pill-btn inline-flex border border-accent/60 px-4 py-2 text-sm font-medium text-accent hover:bg-accent/10"
+            href="https://endscape.sumupstore.com/products"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open full store</a
+          >
+        </div>
+        <div id="merchGrid" class="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
+          <a
+            class="card rounded-soft overflow-hidden transition hover:border-accent/60 hover:bg-zinc-900/90"
+            href="https://endscape.sumupstore.com/product/digital-morphine-t-shirt"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="./assets/Merch/DigitalMorphine.png" alt="Digital Morphine ENDSCAPE shirt" class="h-72 w-full object-contain bg-white/5 p-4" loading="lazy" />
+            <div class="p-4">
+              <h3 class="text-base font-semibold text-zinc-100">Digital Morphine Tee</h3>
+              <p class="mt-2 text-sm text-zinc-400">View this design in the official ENDSCAPE store.</p>
+            </div>
+          </a>
+          <a
+            class="card rounded-soft overflow-hidden transition hover:border-accent/60 hover:bg-zinc-900/90"
+            href="https://endscape.sumupstore.com/product/not-worth-saving-long-sleeve"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="./assets/Merch/NotWorthSaving.png" alt="Not Worth Saving ENDSCAPE long sleeve" class="h-72 w-full object-contain bg-white/5 p-4" loading="lazy" />
+            <div class="p-4">
+              <h3 class="text-base font-semibold text-zinc-100">Not Worth Saving Long Sleeve</h3>
+              <p class="mt-2 text-sm text-zinc-400">View this design in the official ENDSCAPE store.</p>
+            </div>
+          </a>
+        </div>
+        <p class="mt-3 text-center text-xs text-zinc-500">
+          Store inventory lives on SumUp, so product availability and pricing are always current there.
+        </p>
+      </section>
+
+      <section id="gallery" class="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
+        <h2 class="mb-6 font-display text-3xl font-semibold tracking-wide">Gallery</h2>
+        <div id="galleryGrid" class="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4"></div>
+      </section>
+
+      <section id="join" class="mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+        <div class="card rounded-soft p-6 sm:p-8">
+          <div class="text-center">
+            <h2 class="font-display text-3xl font-semibold tracking-wide">Join the mailing list</h2>
+            <p class="mt-2 text-zinc-300">Get first dibs on new music, tickets and merch. No spam.</p>
+          </div>
+
+          <div class="mailing-embed mx-auto mt-6">
+            <script
+              async
+              src="https://eomail5.com/form/5a03dd92-1e08-11f1-bee2-9b4f81d88c66.js"
+              data-form="5a03dd92-1e08-11f1-bee2-9b4f81d88c66"
+            ></script>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t border-white/10 bg-zinc-950/80">
+      <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-5 px-4 py-8 sm:flex-row sm:items-center sm:px-6">
+        <div>
+          <img src="./assets/logos/endscape-logo-white.svg" alt="ENDSCAPE logo" class="h-7 w-auto" />
+          <p class="mt-2 text-sm text-zinc-400">© ENDSCAPE. All rights reserved.</p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 text-sm">
+          <a class="pill-btn border border-white/20 px-3 py-1.5 hover:border-accent/60 hover:text-accent" href="https://www.instagram.com/endscapeband/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a class="pill-btn border border-white/20 px-3 py-1.5 hover:border-accent/60 hover:text-accent" href="https://www.tiktok.com/@endscapeband" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a class="pill-btn border border-white/20 px-3 py-1.5 hover:border-accent/60 hover:text-accent" href="https://www.facebook.com/endscapeband" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a class="pill-btn border border-white/20 px-3 py-1.5 hover:border-accent/60 hover:text-accent" href="https://www.youtube.com/@endscapeband" target="_blank" rel="noopener noreferrer">YouTube</a>
+          <a class="pill-btn border border-accent/60 px-3 py-1.5 text-accent hover:bg-accent/10" href="./epk/index.html">EPK</a>
+        </div>
+      </div>
+    </footer>
+
+    <dialog id="lightbox" class="w-[min(92vw,960px)] rounded-xl border border-white/20 bg-zinc-950 p-2 backdrop:bg-black/80">
+      <button id="lightboxClose" class="pill-btn mb-2 ml-auto block border border-white/20 px-3 py-1 text-sm">Close</button>
+      <img id="lightboxImage" src="" alt="Live photo" class="max-h-[80vh] w-full rounded-lg object-contain" />
+    </dialog>
+
+      <script>
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      menuToggle?.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', (!expanded).toString());
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileMenu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      const galleryGrid = document.getElementById('galleryGrid');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightboxImage');
+      const lightboxClose = document.getElementById('lightboxClose');
+      const fallbackGalleryImages = [
+        'live_01.webp',
+        'live_02.webp',
+        'live_03.webp',
+        'live_04.webp',
+        'live_05.webp',
+        'live_06.webp',
+        'live_07.webp',
+        'live_08.webp'
+      ];
+
+      const renderGallery = (images) => {
+        images.slice(0, 16).forEach((src, index) => {
+            const resolvedSrc =
+              src.startsWith('/') || src.startsWith('./') || src.startsWith('http')
+                ? src
+                : `./assets/live/${src}`;
+            const button = document.createElement('button');
+            button.className = 'card rounded-xl overflow-hidden border transition hover:border-accent/60';
+            button.type = 'button';
+
+            const image = document.createElement('img');
+            image.src = resolvedSrc;
+            image.alt = `ENDSCAPE live photo ${index + 1}`;
+            image.loading = 'lazy';
+            image.className = 'h-36 w-full object-cover sm:h-44';
+
+            button.appendChild(image);
+            button.addEventListener('click', () => {
+              lightboxImage.src = resolvedSrc;
+              lightbox.showModal();
+            });
+
+            galleryGrid.appendChild(button);
+          });
+      };
+
+      fetch('./assets/live/manifest.json')
+        .then((response) => response.json())
+        .then((images) => renderGallery(images))
+        .catch(() => {
+          renderGallery(fallbackGalleryImages);
+        });
+
+      lightboxClose?.addEventListener('click', () => lightbox.close());
+      lightbox?.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+          lightbox.close();
+        }
+      });
+    </script>
+  </body>
+</html>

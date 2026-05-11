@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800">
+  <rect width="1200" height="800" fill="#141418"/>
+  <path d="M100 200 H1100" stroke="#e11d48" stroke-opacity="0.55" stroke-width="44"/>
+  <path d="M100 370 H1100" stroke="#e11d48" stroke-opacity="0.35" stroke-width="44"/>
+  <path d="M100 540 H1100" stroke="#e11d48" stroke-opacity="0.2" stroke-width="44"/>
+  <text x="80" y="720" fill="#f4f4f5" font-family="Rajdhani, Arial" font-size="90" font-weight="700">LIVE 05</text>
+</svg>

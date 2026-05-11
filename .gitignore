@@ -1,0 +1,11 @@
+.DS_Store
+.env
+.env.local
+.env.*.local
+
+# macOS / editor noise
+*/.DS_Store
+
+# deployment / logs
+*.log
+
